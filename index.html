@@ -6,6 +6,9 @@
     </head>
     
     <body>
+        <h1>Rock Paper Scissors!</h1>
+        <h2>From The Odin Project</h2>
+        
         <script>
             /* CHOICES
              * 0 - Rock
@@ -17,23 +20,21 @@
                 let choice = Math.floor(Math.random()*3);
                 if(choice === 0)
                 {
-                    return 'Rock';
+                    return 'rock';
                 }
                 else if(choice === 1)
                 {
-                    return 'Paper';
+                    return 'paper';
                 }
                 else
                 {
-                    return 'Scissors';
+                    return 'scissors';
                 }
             }
             
             //Play Round Function
             function playRound(playerSelection, computerSelection)
             {
-                playerSelection = playerSelection.toLowerCase();
-                computerSelection = computerSelection.toLowerCase();
                 let playerWon = false;
                 
                 if(playerSelection === computerSelection)
@@ -68,7 +69,55 @@
                 return (str[0].toUpperCase() + str.slice(1));
             }
             
+            function game()
+            {
+                let playerScore = 0;
+                let computerScore = 0;
+                let ties = 0;
+                let roundNumber = 0;
+                let numberOfRounds = 5;
+                
+                for(roundNumber=0; roundNumber < numberOfRounds; roundNumber++)
+                {
+                    let playerChoice = prompt("Make your move:");
+                    playerChoice = playerChoice.toLowerCase();
+                    
+                    if(playerChoice==='rock' || playerChoice==='paper' || playerChoice==='scissors')
+                    {
+                        let message = playRound(playerChoice, computerPlay());
+                        console.log(message);
+                        
+                        if(message.includes('Win'))
+                        {
+                            playerScore++;
+                        }
+                        else if(message.includes('Lose'))
+                        {
+                            computerScore++;
+                        }
+                        else
+                        {
+                            ties++;
+                        }
+                    }
+                    else
+                    {
+                        alert("Invalid Input. Please enter Rock/Paper/Scissors.");
+                        roundNumber--;
+                    }
+                }
+                
+                console.log("---Results---");
+                console.log("Your Score: "+playerScore);
+                console.log("Computer's Score: "+computerScore);
+                console.log("Ties: "+ties);
+                
+                let status = (playerScore > computerScore) ? "You Win!" : 
+                             (playerScore === computerScore) ? "It's a Tie!" : "You Lose."
+                console.log(status);
+            }
             
+            game();
         </script>
     </body>
 </html>

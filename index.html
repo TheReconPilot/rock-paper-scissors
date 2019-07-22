@@ -12,7 +12,7 @@
              * 1 - Paper
              * 2 - Scissors
              */
-            function computerPlay()
+            function computerPlay()     //Computer Selection
             {
                 let choice = Math.floor(Math.random()*3);
                 if(choice === 0)
@@ -29,6 +29,7 @@
                 }
             }
             
+            //Play Round Function
             function playRound(playerSelection, computerSelection)
             {
                 playerSelection = playerSelection.toLowerCase();
@@ -62,10 +63,12 @@
                 return `You ${status}! ${winningSelection} ${beatORbeats} ${losingSelection}!`;
             }
             
-            function capitalize(str)
+            function capitalize(str)    //Capitalize First Letter
             {
                 return (str[0].toUpperCase() + str.slice(1));
             }
+            
+            
         </script>
     </body>
 </html>

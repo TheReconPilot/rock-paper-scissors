@@ -3,17 +3,54 @@
     <head>
         <title>Rock Paper Scissors</title>
         <meta charset="UTF-8">
+
+        <link href="normalize.css" type="text/css" rel="stylesheet">
+        <link href="style.css" type="text/css" rel="stylesheet">
     </head>
     
     <body>
+        <header>
         <h1>Rock Paper Scissors!</h1>
         <h2>From The Odin Project</h2>
+        </header>
 
-        <div>
+        <div class = "buttons">
             <button id = "rock">Rock</button>
             <button id = "paper">Paper</button>
             <button id = "scissors">Scissors</button>
         </div>
+
+        <div class = "results">
+            <h3>Score</h3>
+            <p><span id="status">Status</span>Result of the Current Round will appear here</p>
+
+            <table>
+                <tr>
+                    <th scope="row">Rounds</th>
+                    <td id="rounds">0</td>
+                </tr>
+                <tr>
+                    <th scope="row">Wins</th>
+                    <td id="wins">0</td>
+                </tr>
+                <tr>
+                    <th scope="row">Losses</th>
+                    <td id="losses">0</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ties</th>
+                    <td id="ties">0</td>
+                </tr>
+            </table>
+
+            <p><span id="final_result">Final Result</span>Keep on Playing...</p>
+        </div>
+
+        <footer>
+            <p>A Game By Purva</p>
+            <p>For The Odin Project!</p>
+        <footer>
+
         <script type="text/javascript" src="./script.js"></script>
     </body>
 </html>

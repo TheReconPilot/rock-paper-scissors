@@ -2,11 +2,16 @@ const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
+const status = document.querySelector("#status");
+const rounds = document.querySelector("#rounds");
+const wins = document.querySelector("#wins");
+const losses = document.querySelector("#losses");
+const ties = document.querySelector("#ties");
+
+window.addEventListener('click', e=> playRound(e.target.getAttribute('id'), computerPlay()));
+
 // ---------------- GAME CODE ---------------------
 
-let playerScore = 0;
-let computerScore = 0;
-let ties = 0;
 let roundNumber = 0;
 let winningCriteria = 5;
 
@@ -15,6 +20,11 @@ let winningCriteria = 5;
  * 1 - Paper
  * 2 - Scissors
  */
+
+function capitalize(str)    //Capitalize First Letter
+{
+    return (str[0].toUpperCase() + str.slice(1));
+}
 
  function computerPlay()     //Computer Selection
 {
@@ -36,12 +46,16 @@ let winningCriteria = 5;
 //Play Round Function
 function playRound(playerSelection, computerSelection)
 {
+    if(!playerSelection)
+    {
+        return;
+    }
     let playerWon = false;
     
     if(playerSelection === computerSelection)
     {
-        console.log(`It's a tie. Both selected ${capitalize(playerSelection)}!`);
-        ties++;
+        status.innerText = `It's a tie. Both selected ${capitalize(playerSelection)}!`;
+        ties.innerText++;
         return;
     }
     
@@ -50,31 +64,38 @@ function playRound(playerSelection, computerSelection)
             (playerSelection==='scissors' && computerSelection==='paper') )
     {
         playerWon = true;
-        playerScore++;
+        wins.innerText++;
     }
     else
     {
         playerWon = false;
-        computerScore++;
+        losses.innerText++;
     }
     
     playerSelection = capitalize(playerSelection);
     computerSelection = capitalize(computerSelection);
     
-    let status = playerWon? 'Win' : 'Lose';
+    let win_or_loss_status = playerWon? 'Win' : 'Lose';
     let winningSelection = playerWon? playerSelection : computerSelection;
     let losingSelection = playerWon? computerSelection : playerSelection;
     let beatORbeats = winningSelection==='Scissors' ? 'beat' : 'beats';
     
-    console.log(`You ${status}! ${winningSelection} ${beatORbeats} ${losingSelection}!`);
+    status.innerText = `You ${win_or_loss_status}! ${winningSelection} ${beatORbeats} ${losingSelection}!`;
+    rounds.innerText++;
+
+    if(wins.innerText === "5" || losses.innerText === "5")
+    {
+        reset();
+    }
+
+    return;
 }
 
-function capitalize(str)    //Capitalize First Letter
+function reset()
 {
-    return (str[0].toUpperCase() + str.slice(1));
+    
 }
 
-window.addEventListener('click', e=> playRound(e.target.getAttribute('id'), computerPlay()));
 /*
 function game()
 {

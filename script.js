@@ -8,7 +8,16 @@ const wins = document.querySelector("#wins");
 const losses = document.querySelector("#losses");
 const ties = document.querySelector("#ties");
 
-window.addEventListener('click', e=> playRound(e.target.getAttribute('id'), computerPlay()));
+const finalResult = document.querySelector("#final_result");
+
+const buttons = document.querySelector(".buttons");
+
+buttons.addEventListener('click', executePlayRound);
+
+function executePlayRound(event)
+{
+    playRound(event.target.getAttribute('id'), computerPlay());
+}
 
 // ---------------- GAME CODE ---------------------
 
@@ -46,6 +55,7 @@ function capitalize(str)    //Capitalize First Letter
 //Play Round Function
 function playRound(playerSelection, computerSelection)
 {
+
     if(!playerSelection)
     {
         return;
@@ -85,66 +95,17 @@ function playRound(playerSelection, computerSelection)
 
     if(wins.innerText === "5" || losses.innerText === "5")
     {
-        reset();
+        if(wins.innerText > losses.innerText)
+        {
+            finalResult.innerText = "You Won!";
+        }
+        else
+        {
+            finalResult.innerText = "You Lost.";
+        }
+        buttons.removeEventListener('click', executePlayRound);
     }
 
     return;
 }
 
-function reset()
-{
-    
-}
-
-/*
-function game()
-{
-    let playerScore = 0;
-    let computerScore = 0;
-    let ties = 0;
-    let roundNumber = 0;
-    let winningCriteria = 5;
-    
-    while
-    {
-        //let playerChoice = prompt("Make your move:");
-        let playerChoice;
-        playerChoice = playerChoice.toLowerCase();
-        
-        if(playerChoice==='rock' || playerChoice==='paper' || playerChoice==='scissors')
-        {
-            let message = playRound(playerChoice, computerPlay());
-            console.log(message);
-            
-            if(message.includes('Win'))
-            {
-                playerScore++;
-            }
-            else if(message.includes('Lose'))
-            {
-                computerScore++;
-            }
-            else
-            {
-                ties++;
-            }
-        }
-        else
-        {
-            alert("Invalid Input. Please enter Rock/Paper/Scissors.");
-            roundNumber--;
-        }
-    }
-    
-    console.log("---Results---");
-    console.log("Your Score: "+playerScore);
-    console.log("Computer's Score: "+computerScore);
-    console.log("Ties: "+ties);
-    
-    let status = (playerScore > computerScore) ? "You Win!" : 
-                    (playerScore === computerScore) ? "It's a Tie!" : "You Lose."
-    console.log(status);
-}
-
-game();
-*/

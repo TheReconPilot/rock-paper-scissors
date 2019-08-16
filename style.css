@@ -6,6 +6,8 @@ body {
     position: relative;
     top: 130px;
     font-family: sans-serif;
+    background-image: url("black-wallpaper-night-sky-7477.jpg");
+    background-size: cover;
 }
 
 .container {
@@ -18,9 +20,14 @@ table {
 }
 
 td, th {
-    border: 2px solid rebeccapurple;
+    border: 1px solid white;
     padding: 5px;
     margin: 5px;
+    color: white;
+}
+
+th {
+    background-color: black;
 }
 
 h1 {

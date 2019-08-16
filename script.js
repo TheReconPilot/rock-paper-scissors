@@ -8,6 +8,8 @@ const wins = document.querySelector("#wins");
 const losses = document.querySelector("#losses");
 const ties = document.querySelector("#ties");
 
+const reset = document.querySelector("#reset");
+
 const finalResult = document.querySelector("#final_result");
 
 const buttons = document.querySelector(".buttons");
@@ -66,6 +68,7 @@ function playRound(playerSelection, computerSelection)
     {
         status.innerText = `It's a tie. Both selected ${capitalize(playerSelection)}!`;
         ties.innerText++;
+        rounds.innerText++;
         return;
     }
     
@@ -97,11 +100,11 @@ function playRound(playerSelection, computerSelection)
     {
         if(wins.innerText > losses.innerText)
         {
-            finalResult.innerText = "You Won!";
+            finalResult.innerText = "You Won! Reset the Game to Play again.";
         }
         else
         {
-            finalResult.innerText = "You Lost.";
+            finalResult.innerText = "You Lost. Reset the Game to Play again.";
         }
         buttons.removeEventListener('click', executePlayRound);
     }
@@ -109,3 +112,8 @@ function playRound(playerSelection, computerSelection)
     return;
 }
 
+reset.addEventListener('click', resetGame);
+
+function resetGame() {
+    document.location.reload();
+}

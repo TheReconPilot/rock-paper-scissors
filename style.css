@@ -64,6 +64,12 @@ span {
     text-align: center;
 }
 
+#reset {
+    display: block;
+    width: 120px;
+    margin: 30px auto;
+}
+
 header {
     position: fixed;
     top: 0;

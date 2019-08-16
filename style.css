@@ -116,4 +116,5 @@ button:hover {
     color: red;
     border-color: red;
     transition: 0.2s;
+    cursor: pointer;
 }
